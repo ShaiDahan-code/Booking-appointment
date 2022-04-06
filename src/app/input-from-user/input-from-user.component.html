@@ -1,0 +1,49 @@
+
+<div class="alert alert-success" role="alert" *ngIf="successMsg">
+  {{successMsg}}
+</div>
+
+<div class="alert alert-danger" role="alert" *ngIf="errorMsg">
+  {{ errorMsg }}
+</div>
+
+
+<!--create a box for get name and date from user-->
+<div class="container" id="testBox">
+  <div class="row">
+    <div class="col-xs-5">
+
+
+      <div class="form-group">
+        <input type="text" class="form-control" id="name" placeholder="Enter full name" [(ngModel)]="name">
+        <p [ngStyle]="{color: 'red'}" class="alert alert-danger mt-3 mb-0" *ngIf="nameFlag">*ERROR* : The Name is empty. </p>
+        <hr>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-5">
+      <div class="form-group">
+        <input type="text" class="form-control" id="email" placeholder="Enter email adress" [(ngModel)]="email">
+        <p [ngStyle]="{color: 'red'}" class="alert alert-danger mt-3 mb-0" *ngIf="emailFlag">*ERROR* : The Email is empty. </p>
+        <p [ngStyle]="{color: 'red'}" class="alert alert-danger mt-3 mb-0" *ngIf="!emailFlag && emailFormatFlag">*ERROR* : The Email is not in the right format. </p>
+        <hr>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-5">
+      <div class="form-group">
+        <input type="date" class="form-control" id="date" placeholder="Enter date" [(ngModel)]="date">
+        <p [ngStyle]="{color: 'red'}" class="alert alert-danger mt-3 mb-0" *ngIf="dateEmptyFlag">*ERROR* : You not fill the Date! </p>
+        <p [ngStyle]="{color: 'red'}" class="alert alert-danger mt-3 mb-0" *ngIf="!dateEmptyFlag && dateFlag">*ERROR* : The Date you pick is pass away! </p>
+        <hr>
+
+      </div>
+    </div>
+  </div>
+<!--  add a button to submit the name and date-->
+  <button mat-raised-button class="btn btn-success" (click)="onSubmit()">Make Appointment</button>
+</div>
